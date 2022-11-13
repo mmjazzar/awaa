@@ -12,7 +12,7 @@ RUN ansible-galaxy collection install ibm.blockchain_platform
 
 # In the second stage, build the Hyperledger Fabric binaries with HSM enabled (this is not the default).
 FROM registry.access.redhat.com/ubi8/ubi-minimal AS fabric
-RUN dnf install git make tar gzip which findutils gcc && microdnf clean all
+RUN microdnf install git make tar gzip which findutils gcc && microdnf clean all
 RUN curl -sSL https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz | tar xzf - -C /usr/local
 ENV GOPATH=/go
 ENV PATH=/usr/local/go/bin:$PATH
